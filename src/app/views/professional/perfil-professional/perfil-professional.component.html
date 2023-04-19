@@ -1,0 +1,365 @@
+<c-container *ngIf="professional$">
+  <c-row>
+    <c-nav variant="tabs">
+      <a
+        [active]="true"
+        [cTabContent]="tabContent"
+        [routerLink]
+        [tabPaneIdx]="0"
+        cNavLink
+        >Dados gerais</a
+      >
+      <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink
+        >Anexos</a
+      >
+      <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="2" cNavLink
+        >Observações</a
+      >
+    </c-nav>
+    <c-tab-content #tabContent="cTabContent">
+      <c-tab-pane class="p-3">
+        <form
+          [validated]="customValidate"
+          cForm
+          [formGroup]="PerfilProfessionalForm"
+          (ngSubmit)="update()"
+          [gutter]="3"
+        >
+          <c-row>
+            <c-col xs="6">
+              <div class="mb-3">
+                <label cLabel for="client_name">Nome</label>
+                <input
+                  cFormControl
+                  id="client_name"
+                  placeholder="*Joao da silva"
+                  type="text"
+                  formControlName="name"
+                  required
+                  [(ngModel)]="professional$.name"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="4">
+              <div>
+                <label cLabel for="client_cpf">CPF</label>
+                <input
+                  cFormControl
+                  id="client_cpf"
+                  placeholder="*000.000.000-00"
+                  type="text"
+                  formControlName="cpf"
+                  mask="000.000.000-00"
+                  required
+                  [(ngModel)]="professional$.cpf"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="2"> </c-col>
+            <c-col xs="3">
+              <div>
+                <label cLabel for="client_data_nascimento"
+                  >Data de nascimento</label
+                >
+                <input
+                  cFormControl
+                  id="client_data_nascimento"
+                  placeholder="Física"
+                  type="date"
+                  formControlName="birthDate"
+                  required
+                  [(ngModel)]="professional$.birthDate"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="3">
+              <div>
+                <label cLabel for="client_professional">Função</label>
+                <input
+                  cFormControl
+                  id="client_professional"
+                  placeholder="*Desenvolvedor"
+                  type="text"
+                  formControlName="function"
+                  [(ngModel)]="professional$.function"
+                />
+              </div>
+            </c-col>
+          </c-row>
+          <hr class="mt-4" />
+          <h5 class="py-2">Endereço</h5>
+          <c-row>
+            <c-col xs="3">
+              <div>
+                <label cLabel for="client_cep">CEP</label>
+                <input
+                  cFormControl
+                  id="client_cep"
+                  placeholder="*00000-000*"
+                  type="text"
+                  formControlName="cep"
+                  required
+                  mask="00000-000"
+                  [(ngModel)]="professional$.cep"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="4">
+              <!-- <div>
+                  <label cLabel for="client_uf">UF</label>
+                  <input
+                    cFormControl
+                    id="client_uf"
+                    placeholder="*RS"
+                    type="text"
+                    formControlName="uf"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div> -->
+              <div>
+                <label cLabel for="client_city">Estado</label>
+                <select
+                  aria-label="Large select example"
+                  cSelect
+                  class="mb-3"
+                  formControlName="uf"
+                  (change)="selectedState($event)"
+                  [(ngModel)]="professional$.uf"
+                >
+                  <option
+                    *ngFor="let item of sharedService.states"
+                    [value]="item.sigla"
+                  >
+                    {{ item.nome }}
+                  </option>
+                </select>
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="5">
+              <!-- <div>
+                  <label cLabel for="client_city">Municipio</label>
+                  <input
+                    cFormControl
+                    id="client_city"
+                    placeholder="*Novo Hamburgo"
+                    type="text"
+                    formControlName="city"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div> -->
+              <label cLabel for="client_city">Cidade</label>
+              <select
+                aria-label="Large select example"
+                cSelect
+                class="mb-3"
+                formControlName="city"
+                [(ngModel)]="professional$.city"
+              >
+                <option
+                  *ngFor="let item of sharedService.cities"
+                  [value]="item"
+                >
+                  {{ item }}
+                </option>
+              </select>
+              <c-form-feedback [valid]="false"
+                >Este campo é obrigatório</c-form-feedback
+              >
+              <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+
+              <div></div>
+            </c-col>
+          </c-row>
+          <c-row class="py-2">
+            <c-col xs="12">
+              <div>
+                <label cLabel for="client_address">Endereço</label>
+                <input
+                  cFormControl
+                  id="client_address"
+                  placeholder="*Guia lopes"
+                  type="text"
+                  formControlName="address"
+                  required=""
+                  [(ngModel)]="professional$.address"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+          </c-row>
+          <c-row>
+            <c-col xs="4">
+              <div>
+                <label cLabel for="client_district">Bairro</label>
+                <input
+                  cFormControl
+                  id="client_district"
+                  placeholder="*Centro*"
+                  type="text"
+                  formControlName="district"
+                  required=""
+                  [(ngModel)]="professional$.district"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="2">
+              <div>
+                <label cLabel for="client_number">Numero</label>
+                <input
+                  cFormControl
+                  id="client_number"
+                  placeholder="*100"
+                  type="number"
+                  min="0"
+                  formControlName="number"
+                  required=""
+                  [(ngModel)]="professional$.number"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="6">
+              <div>
+                <label cLabel for="client_complemento">Complemento</label>
+                <input
+                  cFormControl
+                  id="client_complemento"
+                  placeholder="*Bloco 3 / Ap 303"
+                  type="text"
+                  formControlName="complement"
+                  [(ngModel)]="professional$.complement"
+                />
+              </div>
+            </c-col>
+          </c-row>
+          <hr class="mt-5" />
+          <h5 class="py-2">Contato</h5>
+          <c-row>
+            <c-col xs="3">
+              <div>
+                <label cLabel for="client_fone">Telefone</label>
+                <input
+                  cFormControl
+                  id="client_fone"
+                  placeholder="*(00) 0000-0000*"
+                  type="text"
+                  formControlName="telFone"
+                  mask="(00) 0000-0000"
+                  [(ngModel)]="professional$.telFone"
+                />
+              </div>
+            </c-col>
+            <c-col xs="3">
+              <div>
+                <label cLabel for="client_cellfone">Celular</label>
+                <input
+                  cFormControl
+                  id="client_cellfone"
+                  placeholder="*(00) 00000-00-00"
+                  type="text"
+                  formControlName="cellFone"
+                  required
+                  mask="(00) 0000-00000"
+                  [(ngModel)]="professional$.cellFone"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="6">
+              <div>
+                <label cLabel for="client_email">Email</label>
+                <input
+                  cFormControl
+                  id="client_email"
+                  placeholder="*joao@email.com"
+                  type="email"
+                  formControlName="email"
+                  required
+                  [(ngModel)]="professional$.email"
+                />
+                <c-form-feedback [valid]="false"
+                  >Este campo é obrigatório</c-form-feedback
+                >
+                <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+              </div>
+            </c-col>
+            <c-col xs="12" class="py-4">
+              <div>
+                <label cLabel for="client_obs">Observações de contato</label>
+                <input
+                  cFormControl
+                  id="client_obs"
+                  placeholder="*"
+                  type="text"
+                  formControlName="obs"
+                  [(ngModel)]="professional$.obs"
+                />
+              </div>
+            </c-col>
+          </c-row>
+          <button cButton type="submit" color="primary" class="btn_form">
+            Salvar
+          </button>
+          <a cButton color="warning" [routerLink]="['../']" class="btn_form">
+            Voltar
+          </a>
+        </form>
+      </c-tab-pane>
+      <c-tab-pane class="p-3">
+        This is some placeholder content the <strong>Profile</strong> tab's
+        associated content. Clicking another tab will toggle the visibility of
+        this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling. You can use it with tabs, pills, and any
+        other .nav-powered navigation.
+      </c-tab-pane>
+      <c-tab-pane class="p-3">
+        This is some placeholder content the <strong>Contact</strong> tab's
+        associated content. Clicking another tab will toggle the visibility of
+        this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling. You can use it with tabs, pills, and any
+        other .nav-powered navigation.
+      </c-tab-pane>
+    </c-tab-content>
+  </c-row>
+</c-container>

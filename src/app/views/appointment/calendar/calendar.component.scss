@@ -1,0 +1,36 @@
+.card-details{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card-details svg {
+  margin-right: 1rem;
+  color: #ccc;
+}
+.details{
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+p{
+  margin-bottom: 0px;
+}
+.details_name
+{
+  color: #0a58ca;
+}
+.details_contact
+{
+  color: #c3c3c3;
+}
+.details p{
+  color: #c3c3c3;
+}
+.modal-footer{
+  justify-content: space-between;
+  gap: 20px;
+}
+.d-hover:hover{
+  cursor: pointer;
+  color: #c3c3c3;
+}

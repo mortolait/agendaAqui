@@ -1,0 +1,95 @@
+<c-container>
+  <c-row class="d-flex mb-5" >
+    <c-col cCol="7">
+      <!-- <div class="fs-2 fw-semibold">{{ title }}</div> -->
+      <c-breadcrumb-router></c-breadcrumb-router>
+    </c-col>
+    <c-col cCol="5" class="d-flex" style="justify-content: end">
+      <button cButton class="ms-1" variant="outline" size="md">Imprimir</button>
+      <button cButton class="ms-1" size="md" (click)="register()">Incluir cadastro</button>
+      <button cButton class="ms-1" variant="outline" size="md">
+        Mais Acões
+      </button>
+    </c-col>
+  </c-row>
+  <app-modal-confirm [item]="itemSelectd"></app-modal-confirm>
+  <c-row class="rowMain">
+    <c-smart-table
+      [activePage]="1"
+      [columnSorter]="true"
+      [columns]="columns"
+      [columnFilter]="true"
+      [itemsPerPageSelect]="true"
+      [itemsPerPage]="5"
+      [items]="serviceClients.clients"
+      [sorterValue]="{ column: 'name', state: 'asc' }"
+      [tableFilter]="true"
+      [tableProps]="{ hover: true, striped: true, responsive: true }"
+      [tableBodyProps]="{ align: 'middle' }"
+      cleaner
+      clickableRows
+      header
+      pagination
+      (selectedItemsChange)="checkSelected($event)"
+      tableFilterPlaceholder="Pesquisa por Nome, email ou"
+    >
+      <ng-template cTemplateId="tableDetails" let-item="item">
+        <div>
+          <div [visible]="details_visible[item._id] === true" cCollapse>
+            <div class="div_card_collapse">
+              <h3>{{ item["name"] }}</h3>
+              <p class="text-muted">CPF: {{ item["cpf"] }}</p>
+              <button
+                cButton
+                color="info"
+                size="sm"
+                (click)="perfilClient(item)"
+              >
+                Perfil
+              </button>
+              <button
+                cButton
+                class="ms-1"
+                (click)="handleLiveDemoChange(item)"
+                color="danger"
+                size="sm"
+              >
+                Apagar
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template
+        cTemplateId="tableData"
+        let-columnName="columnName"
+        let-item="item"
+        let-tdContent="tdContent"
+      >
+        <td>
+          <ng-container [ngSwitch]="columnName">
+            <ng-container *ngSwitchCase="'status'">
+              <c-badge [color]="getBadge(tdContent)">
+                {{ item[columnName] }}
+              </c-badge>
+            </ng-container>
+            <ng-container *ngSwitchCase="'show'" class="py-2">
+              <button
+                (click)="toggleDetailst(item._id)"
+                cButton
+                color="primary"
+                size="sm"
+                variant="outline"
+              >
+                Mostrar
+              </button>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              {{ tdContent }}
+            </ng-container>
+          </ng-container>
+        </td>
+      </ng-template>
+    </c-smart-table>
+  </c-row>
+</c-container>

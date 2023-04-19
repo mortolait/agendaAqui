@@ -1,0 +1,16 @@
+<c-modal id="liveDemoModal" [visible]="serviceClients.visibleModalConfirm">
+  <c-modal-header>
+    <h2 cModalTitle>Confirmar exclusão de cliente</h2>
+    <button cButtonClose (click)="handleLiveDemoChange()"></button>
+  </c-modal-header>
+  <c-modal-body
+    >A ação não poderá ser desfeita. Clique em "Confirmar" para prosseguir ou em
+    "Voltar" para cancelar.</c-modal-body
+  >
+  <c-modal-footer>
+    <button cButton color="primary" (click)="deleteItem()">Confirmar</button>
+    <button cButton color="secondary" (click)="handleLiveDemoChange()">
+      Voltar
+    </button>
+  </c-modal-footer>
+</c-modal>

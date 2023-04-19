@@ -1,0 +1,281 @@
+<c-container>
+    <c-row>
+      <c-nav variant="tabs">
+        <a
+          [active]="true"
+          [cTabContent]="tabContent"
+          [routerLink]
+          [tabPaneIdx]="0"
+          cNavLink
+          >Dados gerais</a
+        >
+        <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink
+          >Anexos</a
+        >
+        <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="2" cNavLink
+          >Observações</a
+        >
+      </c-nav>
+      <c-tab-content #tabContent="cTabContent">
+        <c-tab-pane class="p-3">
+          <form
+            noValidate
+            cForm
+            [formGroup]="newAppointmentForm"
+            (ngSubmit)="register()"
+            [validated]="customValidate"
+            [gutter]="3"
+          >
+            <c-row>
+              <c-col xs="6">
+                <div>
+                  <label cLabel for="client_city">Cliente</label>
+                  <select
+                    aria-label="Large select example"
+                    cSelect
+                    class="mb-3"
+                    formControlName="client"
+                    required
+                  >
+                    <option *ngFor="let item of clientService.clients" [value]="item._id">
+                      {{ item.name }}
+                    </option>
+                  </select>
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="6">
+                <div>
+                  <label cLabel for="client_city">Profissional</label>
+                  <select
+                    aria-label="Large select example"
+                    cSelect
+                    class="mb-3"
+                    formControlName="professional"
+                    required
+                  >
+                    <option *ngFor="let item of profesisonalService.professionals" [value]="item._id">
+                      {{ item.name }}
+                    </option>
+                  </select>
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+            </c-row>
+            <c-row>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_data">Data</label>
+                  <input
+                    cFormControl
+                    id="appointment_data"
+                    type="date"
+                    formControlName="date"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_time">Horário</label>
+                  <input
+                    cFormControl
+                    id="appointment_time"
+                    placeholder=""
+                    type="time"
+                    formControlName="time"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+
+                <div>
+                  <label cLabel for="appointment_service">Serviço</label>
+                  <select
+                    aria-label="Large select example"
+                    cSelect
+                    class="mb-3"
+                    formControlName="service"
+                    required
+
+                  >
+                    <option *ngFor="let item of appointmentService.typesService" [value]="item._id">
+                      {{ item.name }}
+                    </option>
+                  </select>
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+            </c-row>
+            <c-row>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_value">Valor</label>
+                  <input
+                    cFormControl
+                    id="appointment_value"
+                    type="text"
+                    formControlName="value"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+
+            </c-row>
+            <c-row>
+
+
+            </c-row>
+            <hr class="mt-4" />
+            <h5 class="py-2">Endereço</h5>
+            <c-row>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_cep">CEP</label>
+                  <input
+                    cFormControl
+                    id="appointment_cep"
+                    placeholder="*00000-000*"
+                    type="text"
+                    formControlName="cep"
+                    required
+                    mask="00000-000"
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_uf">UF</label>
+                  <input
+                    cFormControl
+                    id="appointment_uf"
+                    placeholder="*RS"
+                    type="text"
+                    formControlName="uf"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_uf">Cidade</label>
+                  <input
+                    cFormControl
+                    id="appointment_uf"
+                    placeholder="*Porto Alegre"
+                    type="text"
+                    formControlName="city"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+            </c-row>
+            <c-row>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_district">Bairro</label>
+                  <input
+                    cFormControl
+                    id="appointment_district"
+                    placeholder="*Bairro"
+                    type="text"
+                    formControlName="district"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_address">Rua</label>
+                  <input
+                    cFormControl
+                    id="appointment_address"
+                    placeholder="*Rua"
+                    type="text"
+                    formControlName="address"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+              <c-col xs="4">
+                <div>
+                  <label cLabel for="appointment_number">Número</label>
+                  <input
+                    cFormControl
+                    id="appointment_number"
+                    placeholder="*Número"
+                    type="text"
+                    formControlName="number"
+                    required
+                  />
+                  <c-form-feedback [valid]="false"
+                    >Este campo é obrigatório</c-form-feedback
+                  >
+                  <c-form-feedback [valid]="true">Feito!</c-form-feedback>
+                </div>
+              </c-col>
+            </c-row>
+            <button cButton type="submit" color="primary" class="buttonInclud">
+              Salvar
+            </button>
+          </form>
+        </c-tab-pane>
+        <c-tab-pane class="p-3">
+          This is some placeholder content the <strong>Profile</strong> tab's
+          associated content. Clicking another tab will toggle the visibility of
+          this one for the next. The tab JavaScript swaps classes to control the
+          content visibility and styling. You can use it with tabs, pills, and any
+          other .nav-powered navigation.
+        </c-tab-pane>
+        <c-tab-pane class="p-3">
+          This is some placeholder content the <strong>Contact</strong> tab's
+          associated content. Clicking another tab will toggle the visibility of
+          this one for the next. The tab JavaScript swaps classes to control the
+          content visibility and styling. You can use it with tabs, pills, and any
+          other .nav-powered navigation.
+        </c-tab-pane>
+      </c-tab-content>
+    </c-row>
+  </c-container>
