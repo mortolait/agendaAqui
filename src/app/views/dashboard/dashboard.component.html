@@ -6,10 +6,10 @@
           <c-card-body class="p-4">
             <c-row>
               <c-col>
-                <h5 cCardTitle class="fs-4 fw-semibold">Sales</h5>
-                <h6 cCardSubtitle class="fw-normal text-disabled">January - July 2022</h6>
+                <h5 cCardTitle class="fs-4 fw-semibold">Apontamentos</h5>
+                <!-- <h6 cCardSubtitle class="fw-normal text-disabled">January - July 2022</h6> -->
               </c-col>
-              <c-col class="text-end text-primary fs-4 fw-semibold">$613.200</c-col>
+              <c-col class="text-end text-primary fs-4 fw-semibold">${{totValueAppointment}}</c-col>
             </c-row>
           </c-card-body>
           <c-chart
@@ -26,15 +26,15 @@
         <c-card class="mb-4">
           <c-card-body>
             <div class="d-flex justify-content-between">
-              <h5 cCardTitle class="text-disabled">Visitors</h5>
+              <h5 cCardTitle class="text-disabled">Quantidade</h5>
               <div class="bg-primary bg-opacity-25 text-primary p-2 rounded">
                 <svg cIcon name="cilPeople" size="xl"></svg>
               </div>
             </div>
-            <div class="fs-4 fw-semibold pb-3">44.725</div>
-            <small class="text-danger">
+            <div class="fs-4 fw-semibold pb-3">{{countAppointment}}</div>
+            <!-- <small class="text-danger">
               (-12.4% <svg cIcon name="cilArrowBottom"></svg>)
-            </small>
+            </small> -->
           </c-card-body>
         </c-card>
       </c-col>
@@ -42,35 +42,26 @@
         <c-card class="mb-4">
           <c-card-body>
             <div class="d-flex justify-content-between">
-              <h5 cCardTitle class="text-disabled">Orders</h5>
+              <h5 cCardTitle class="text-disabled">Ticket</h5>
               <div class="bg-primary bg-opacity-25 text-primary p-2 rounded">
                 <svg cIcon name="cilCart" size="xl"></svg>
               </div>
             </div>
-            <div class="fs-4 fw-semibold pb-3">385</div>
-            <small class="text-success">
+            <div class="fs-4 fw-semibold pb-3">{{ticket}}</div>
+            <!-- <small class="text-success">
               (17.2% <svg cIcon name="cilArrowTop"></svg>)
-            </small>
+            </small> -->
           </c-card-body>
         </c-card>
       </c-col>
     </c-row>
   </c-col>
   <c-col xl="8">
-    <c-card class="mb-4">
-      <c-card-body class="p-4">
-        <h5 cCardTitle class="fs-4 fw-semibold">Traffic</h5>
-        <h6 cCardSubtitle class="fw-normal text-disabled">
-          January 01, 2021 - December 31, 2021
-        </h6>
-        <c-chart [data]="trafficChart.data" [ngStyle]="{'marginTop.px': '40'}" [options]="trafficChart.options"
-                 height="300" type="bar"></c-chart>
-      </c-card-body>
-    </c-card>
+    
   </c-col>
 </c-row>
 <c-row>
-  <c-col xl="9">
+  <!-- <c-col xl="9">
     <c-card class="mb-4">
       <c-card-body class="p-4">
         <c-row>
@@ -134,101 +125,9 @@
         </table>
       </c-card-body>
     </c-card>
-  </c-col>
-  <c-col xl="3">
+  </c-col> -->
+  <!-- <c-col xl="12">
     <app-widgets-dropdown-vertical></app-widgets-dropdown-vertical>
-  </c-col>
+  </c-col> -->
 </c-row>
-<c-row>
-  <c-col>
-    <c-card class="mb-4">
-      <c-card-body class="p-4">
-        <h5 cCardTitle class="fs-4 fw-semibold">Traffic</h5>
-        <h6 cCardSubtitle class="fw-normal text-disabled border-bottom mb-3 pb-4">
-          Last Week
-        </h6>
-        <c-row>
-          <c-col md="6" xl="6" xs="12">
-            <c-row>
-              <c-col sm="6">
-                <div class="border-start border-start-4 border-start-info py-1 px-3 mb-3">
-                  <div class="text-disabled small">New Clients</div>
-                  <div class="fs-5 fw-semibold">9,123</div>
-                </div>
-              </c-col>
-              <c-col sm="6">
-                <div class="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                  <div class="text-disabled small">Recurring Clients</div>
-                  <div class="fs-5 fw-semibold">22,643</div>
-                </div>
-              </c-col>
-            </c-row>
-            <div class="border-top mb-4"></div>
-            <ng-template [ngForOf]="progressGroupExample1" let-index="index" let-item ngFor>
-              <div class="progress-group mb-4">
-                <div class="progress-group-prepend">
-                  <span class="text-disabled small">{{item.title}}</span>
-                </div>
-                <div class="progress-group-bars">
-                  <c-progress thin>
-                    <c-progress-bar [value]="item.value1" color="info-gradient"></c-progress-bar>
-                  </c-progress>
-                  <c-progress thin>
-                    <c-progress-bar [value]="item.value2" color="danger-gradient"></c-progress-bar>
-                  </c-progress>
-                </div>
-              </div>
-            </ng-template>
-          </c-col>
-          <c-col md="6" xl="6" xs="12">
-            <c-row>
-              <c-col sm="6">
-                <div class="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
-                  <div class="text-disabled small">Pageviews</div>
-                  <div class="fs-5 fw-semibold">78,623</div>
-                </div>
-              </c-col>
-              <c-col sm="6">
-                <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-                  <div class="text-disabled small">Organic</div>
-                  <div class="fs-5 fw-semibold">49,123</div>
-                </div>
-              </c-col>
-            </c-row>
-            <div class="border-top mb-4"></div>
-            <ng-template [ngForOf]="progressGroupExample2" let-index="index" let-item ngFor>
-              <div class="progress-group mb-4">
-                <div class="progress-group-header">
-                  <svg [name]="item.icon" cIcon class="me-2" size="lg"></svg>
-                  <span>{{item.title}}</span>
-                  <span class="ms-auto fw-semibold">{{item.value}}%</span>
-                </div>
-                <div class="progress-group-bars">
-                  <c-progress thin>
-                    <c-progress-bar [value]="item.value" color="warning-gradient"></c-progress-bar>
-                  </c-progress>
-                </div>
-              </div>
-            </ng-template>
-            <div class="mb-5"></div>
-            <ng-template [ngForOf]="progressGroupExample3" let-index="index" let-item ngFor>
-              <div class="progress-group">
-                <div class="progress-group-header">
-                  <svg [name]="item.icon" cIcon class="me-2" size="lg"></svg>
-                  <span>{{item.title}}</span>
-                  <span class="ms-auto fw-semibold">{{item.value}}</span>&nbsp;
-                  <span class="text-disabled small">({{item.percent}}%)</span>
-                </div>
-                <div class="progress-group-bars">
-                  <c-progress thin>
-                    <c-progress-bar [value]="item.percent" color="success-gradient"></c-progress-bar>
-                  </c-progress>
-                </div>
-              </div>
-            </ng-template>
-          </c-col>
-        </c-row>
-      </c-card-body>
-    </c-card>
-  </c-col>
-</c-row>
+

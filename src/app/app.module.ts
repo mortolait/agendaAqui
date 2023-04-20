@@ -47,6 +47,7 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
+  WidgetModule,
 } from '@coreui/angular-pro';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -101,7 +102,7 @@ const maskConfig: Partial<IConfig> = {
     HttpClientModule,
     NgxMaskModule.forRoot(),
     AuthModule,
-
+    WidgetModule
   ],
   providers: [
     {

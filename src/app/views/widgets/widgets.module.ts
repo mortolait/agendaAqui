@@ -29,7 +29,7 @@ import { WidgetsDropdownVerticalComponent } from './widgets-dropdown-vertical/wi
     WidgetsDropdownComponent,
     WidgetsDropdownVerticalComponent,
     ChartSample,
-    WidgetsEComponent
+    WidgetsEComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +48,14 @@ import { WidgetsDropdownVerticalComponent } from './widgets-dropdown-vertical/wi
   exports: [
     WidgetsBrandComponent,
     WidgetsDropdownComponent,
-    WidgetsDropdownVerticalComponent
+    WidgetsDropdownVerticalComponent,
+    WidgetsEComponent,
+    WidgetsComponent,
+    WidgetsBrandComponent,
+    WidgetsDropdownComponent,
+    WidgetsDropdownVerticalComponent,
+    ChartSample,
+    WidgetsEComponent,
   ]
 })
 export class WidgetsModule {
