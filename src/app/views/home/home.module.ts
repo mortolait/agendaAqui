@@ -5,7 +5,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { LoginComponent } from './login/login.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { HomeComponent } from './home.component';
-import { PagesRoutingModule } from '../pages/pages-routing.module';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HomeRoutingModule,
     CommonModule,
-    PagesRoutingModule,
     CardModule,
     ButtonModule,
     GridModule,

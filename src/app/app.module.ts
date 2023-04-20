@@ -1,3 +1,4 @@
+import { RegisterComponent } from './views/pages/register/register.component';
 import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -25,8 +26,8 @@ import {
   DefaultAsideComponent,
   DefaultFooterComponent,
   DefaultHeaderComponent,
-  DefaultLayoutComponent,
-  EmailLayoutComponent,
+  DefaultLayoutComponent
+
 } from './containers';
 
 import {
@@ -63,7 +64,7 @@ const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent,
-  EmailLayoutComponent
+  RegisterComponent
 ];
 
 const maskConfig: Partial<IConfig> = {

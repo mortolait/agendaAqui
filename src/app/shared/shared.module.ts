@@ -24,8 +24,7 @@ import {ModalModule} from '@coreui/angular-pro';
 import { ClientsRoutingModule } from '../views/clients/clients-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
-import { DocsComponentsModule } from '@docs-components/docs-components.module';
-import { SmartTablesRoutingModule } from '../views/smart-tables/smart-tables-routing.module';
+
 
 
 
@@ -55,8 +54,6 @@ import { SmartTablesRoutingModule } from '../views/smart-tables/smart-tables-rou
     ReactiveFormsModule,
     NgxMaskModule,
     CommonModule,
-    DocsComponentsModule,
-    SmartTablesRoutingModule,
     GridModule,
     CardModule,
     SmartTableModule,

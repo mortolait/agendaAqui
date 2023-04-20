@@ -9,8 +9,6 @@ import { PerfilProfessionalComponent } from './perfil-professional/perfil-profes
 import { AlertModule, BadgeModule, BreadcrumbModule, ButtonGroupModule, ButtonModule, CardModule, CollapseModule, DatePickerModule, DateRangePickerModule, DropdownModule, FormModule, GridModule, ListGroupModule, ModalModule, MultiSelectModule, NavModule, SharedModule, SmartTableModule, TableModule, TabsModule, TimePickerModule, UtilitiesModule } from '@coreui/angular-pro';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
-import { DocsComponentsModule } from '@docs-components/docs-components.module';
-import { SmartTablesRoutingModule } from '../smart-tables/smart-tables-routing.module';
 
 
 @NgModule({
@@ -39,8 +37,6 @@ import { SmartTablesRoutingModule } from '../smart-tables/smart-tables-routing.m
     ReactiveFormsModule,
     NgxMaskModule,
     CommonModule,
-    DocsComponentsModule,
-    SmartTablesRoutingModule,
     GridModule,
     CardModule,
     SmartTableModule,

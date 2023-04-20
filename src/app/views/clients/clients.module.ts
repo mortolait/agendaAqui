@@ -32,8 +32,7 @@ import { ListClientsComponent } from './list-clients/list-clients.component';
 import { PerfilClientsComponent } from './perfil-clients/perfil-clients.component';
 import { NewClientComponent } from './new-client/new-client.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { DocsComponentsModule } from '@docs-components/docs-components.module';
-import { SmartTablesRoutingModule } from '../smart-tables/smart-tables-routing.module';
+
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { ListAppointmentComponent } from '../appointment/list-appointment/list-appointment.component';
 @NgModule({
@@ -65,8 +64,6 @@ import { ListAppointmentComponent } from '../appointment/list-appointment/list-a
     ReactiveFormsModule,
     NgxMaskModule,
     CommonModule,
-    DocsComponentsModule,
-    SmartTablesRoutingModule,
     GridModule,
     CardModule,
     SmartTableModule,
