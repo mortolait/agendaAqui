@@ -16,6 +16,7 @@ export class ProfessionalService {
   professionals!: Professionals;
 
   get(): Observable<Professionals> {
+    this.professionals = []
     return this.httpClient.get<Professionals>(`${API}/professionals`);
   }
   getById(id: String): Observable<Professional>{

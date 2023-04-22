@@ -44,6 +44,7 @@ export class AppointmentService {
   }
 
   getTypeService(): Observable<any> {
+    this.typesService = [];
     return this.httpClient.get<any>(`${API}/typeServices`);
   }
 

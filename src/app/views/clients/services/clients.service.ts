@@ -17,6 +17,7 @@ export class ClientsService {
   constructor(private httpClient: HttpClient) {}
 
   get(): Observable<Clients> {
+    this.clients = []
     return this.httpClient.get<Clients>(`${API}/clients`);
   }
   getClientById(id: String): Observable<Client>{

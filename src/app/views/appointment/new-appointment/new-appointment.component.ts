@@ -27,8 +27,9 @@ export class NewAppointmentComponent {
   customValidate: boolean = false;
   type!:String;
   msg!:String;
-  
+
   ngOnInit(): void {
+
     this.getClients();
     this.getProfessional();
     this.getService();
@@ -47,16 +48,19 @@ export class NewAppointmentComponent {
       number: new FormControl('', [Validators.required]),
       complement: new FormControl(''),
     });
+
+
   }
 
   register() {
-
+    this.customValidate = true;
     let newAppointment = this.newAppointmentForm.getRawValue() as Appointment;
     if (this.newAppointmentForm.valid) {
       console.log(this.newAppointmentForm);
       this.appointmentService.create(newAppointment).subscribe({
         next: (response) => {
           this.customValidate = false;
+
           this.router.navigate([`../appointment/${response}`]);
         },
         error: (err) => {
@@ -73,7 +77,6 @@ export class NewAppointmentComponent {
     this.clientService.get().subscribe({
       next: (data) => {
         this.clientService.clients = data;
-        this.newAppointmentForm.controls['client'].setValue(this.clientService.clients[0]);
       },
       error: (err) => {
         console.log(err);
@@ -84,7 +87,6 @@ export class NewAppointmentComponent {
     this.profesisonalService.get().subscribe({
       next: (data) => {
         this.profesisonalService.professionals = data;
-        this.newAppointmentForm.controls['professional'].setValue(this.profesisonalService.professionals[0]);
       },
       error: (err) => {
         console.log(err);
@@ -96,7 +98,6 @@ export class NewAppointmentComponent {
       next: (response) => {
         console.log({ response });
         this.appointmentService.typesService = response;
-        this.newAppointmentForm.controls['service'].setValue(this.appointmentService.typesService[0]);
       },
     });
   }

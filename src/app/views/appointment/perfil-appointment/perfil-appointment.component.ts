@@ -45,6 +45,7 @@ export class PerfilAppointmentComponent {
   }
 
   ngOnInit(): void {
+    
     this.getClients()
     this.getProfessional()
     this.getService()
@@ -54,7 +55,12 @@ export class PerfilAppointmentComponent {
     console.log(this.profesisonalService.professionals)
 
   }
+
+  ngOnDestroy(){
+    this.perfilAppointmentForm.reset()
+  }
   getClients() {
+    this.clientService.clients = []
     this.clientService.get().subscribe({
       next: (clients) => {
         this.clientService.clients = clients
