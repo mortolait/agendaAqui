@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   public countAppointment!:Number
   public totValueAppointment!:Number
-  public ticket !: Number
+  public ticket !: number
   public progressGroupExample1 = [
     { title: 'Monday', value1: 34, value2: 78 },
     { title: 'Tuesday', value1: 56, value2: 94 },
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
         this.countAppointment = response.result[0].count
         this.totValueAppointment = response.result[0].totalValue
 
-        this.ticket = response.result[0].totalValue/response.result[0].count
+        this.ticket = Math.round(response.result[0].totalValue/response.result[0].count)
       },
       error: (err)=>{
         console.log({err})
