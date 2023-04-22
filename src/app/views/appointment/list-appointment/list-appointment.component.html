@@ -6,20 +6,14 @@
     </c-col>
     <c-col cCol="5" class="d-flex" style="justify-content: end">
       <button cButton class="ms-1" variant="outline" size="md">Imprimir</button>
-      <button cButton class="ms-1" size="md" [routerLink]="['appointment/new-appointment']" >Incluir cadastro</button>
+      <button cButton class="ms-1" size="md" [routerLink]="['/appointment/new-appointment']" >Incluir cadastro</button>
       <button cButton class="ms-1" variant="outline" size="md">
         Mais Acões
       </button>
     </c-col>
   </c-row>
     <c-row class="rowMain">
-      <a
-        cButton
-        color="primary"
-        routerLink="../new-appointment"
-        class="buttonInclud"
-        >Novo Registro</a
-      >
+      
       <c-smart-table
         [activePage]="1"
         [columnSorter]="true"
